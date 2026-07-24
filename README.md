@@ -5,6 +5,7 @@ This repository contains the two source trees required by the door-opening proje
 - `push_door/`: door task, training/evaluation scripts, robot and door assets.
 - `pick_and_place_yzc/`: the original Pick & Place project providing `rl_sim_env`,
   `rl_algorithms`, locomotion configuration, robot descriptions, and assets.
+- `wbc_szy/`: the WBC source tree copied from `/home/jing/wbc_szy`.
 - `checkpoints/`: selected deployable teacher and student policies.
 
 Large training logs, rollout datasets, videos, caches, backup archives, and the

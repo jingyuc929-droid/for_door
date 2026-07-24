@@ -1,0 +1,3068 @@
+env:
+  viewer:
+    eye:
+    - 7.0
+    - -0.5
+    - 4.0
+    lookat:
+    - 0.0
+    - 0.0
+    - 0.0
+    cam_prim_path: /OmniverseKit_Persp
+    resolution:
+    - 1280
+    - 720
+    origin_type: world
+    env_index: 0
+    asset_name: null
+    body_name: null
+  sim:
+    physics_prim_path: /physicsScene
+    device: cuda:0
+    dt: 0.0025
+    render_interval: 8
+    gravity:
+    - 0.0
+    - 0.0
+    - -9.81
+    enable_scene_query_support: false
+    use_fabric: true
+    physx:
+      solver_type: 1
+      min_position_iteration_count: 1
+      max_position_iteration_count: 255
+      min_velocity_iteration_count: 0
+      max_velocity_iteration_count: 255
+      enable_ccd: false
+      enable_stabilization: false
+      enable_enhanced_determinism: false
+      bounce_threshold_velocity: 0.5
+      friction_offset_threshold: 0.04
+      friction_correlation_distance: 0.025
+      gpu_max_rigid_contact_count: 8388608
+      gpu_max_rigid_patch_count: 524288
+      gpu_found_lost_pairs_capacity: 2097152
+      gpu_found_lost_aggregate_pairs_capacity: 33554432
+      gpu_total_aggregate_pairs_capacity: 2097152
+      gpu_collision_stack_size: 67108864
+      gpu_heap_capacity: 67108864
+      gpu_temp_buffer_capacity: 16777216
+      gpu_max_num_partitions: 8
+      gpu_max_soft_body_contacts: 1048576
+      gpu_max_particle_contacts: 1048576
+      solve_articulation_contact_last: false
+    physics_material:
+      func: isaaclab.sim.spawners.materials.physics_materials:spawn_rigid_body_material
+      static_friction: 0.5
+      dynamic_friction: 0.5
+      restitution: 0.0
+      friction_combine_mode: average
+      restitution_combine_mode: average
+      compliant_contact_stiffness: 0.0
+      compliant_contact_damping: 0.0
+    render:
+      enable_translucency: null
+      enable_reflections: null
+      enable_global_illumination: null
+      antialiasing_mode: null
+      enable_dlssg: null
+      enable_dl_denoiser: null
+      dlss_mode: null
+      enable_direct_lighting: null
+      samples_per_pixel: null
+      enable_shadows: null
+      enable_ambient_occlusion: null
+      dome_light_upper_lower_strategy: null
+      carb_settings: null
+      rendering_mode: null
+    create_stage_in_memory: false
+  ui_window_class_type: isaaclab.envs.ui.manager_based_rl_env_window:ManagerBasedRLEnvWindow
+  seed: null
+  decimation: 8
+  scene:
+    num_envs: 4096
+    env_spacing: 4.0
+    lazy_sensor_update: true
+    replicate_physics: true
+    filter_collisions: true
+    clone_in_fabric: false
+    ground:
+      class_type: null
+      prim_path: /World/ground
+      spawn:
+        func: isaaclab.sim.spawners.from_files.from_files:spawn_ground_plane
+        visible: true
+        semantic_tags: null
+        copy_from_source: true
+        usd_path: https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.1/Isaac/Environments/Grid/default_environment.usd
+        color:
+        - 0.78
+        - 0.8
+        - 0.84
+        size:
+        - 600.0
+        - 600.0
+        physics_material:
+          func: isaaclab.sim.spawners.materials.physics_materials:spawn_rigid_body_material
+          static_friction: 0.5
+          dynamic_friction: 0.5
+          restitution: 0.0
+          friction_combine_mode: average
+          restitution_combine_mode: average
+          compliant_contact_stiffness: 0.0
+          compliant_contact_damping: 0.0
+      init_state:
+        pos:
+        - 0.0
+        - 0.0
+        - 0.0
+        rot:
+        - 1.0
+        - 0.0
+        - 0.0
+        - 0.0
+      collision_group: 0
+      debug_vis: false
+    door:
+      class_type: isaaclab.assets.articulation.articulation:Articulation
+      prim_path: '{ENV_REGEX_NS}/Door'
+      spawn:
+        func: isaaclab.sim.spawners.from_files.from_files:spawn_from_usd
+        visible: true
+        semantic_tags: null
+        copy_from_source: true
+        mass_props: null
+        deformable_props: null
+        rigid_props:
+          rigid_body_enabled: null
+          kinematic_enabled: null
+          disable_gravity: false
+          linear_damping: null
+          angular_damping: null
+          max_linear_velocity: null
+          max_angular_velocity: null
+          max_depenetration_velocity: 3.0
+          max_contact_impulse: null
+          enable_gyroscopic_forces: null
+          retain_accelerations: null
+          solver_position_iteration_count: null
+          solver_velocity_iteration_count: null
+          sleep_threshold: null
+          stabilization_threshold: null
+        collision_props: null
+        activate_contact_sensors: false
+        scale: null
+        articulation_props:
+          articulation_enabled: null
+          enabled_self_collisions: false
+          solver_position_iteration_count: 8
+          solver_velocity_iteration_count: 2
+          sleep_threshold: null
+          stabilization_threshold: null
+          fix_root_link: null
+        fixed_tendons_props: null
+        spatial_tendons_props: null
+        joint_drive_props: null
+        visual_material_path: material
+        visual_material: null
+        usd_path: /home/jing/push_door/source/door_env/door_env/assets/Door_description/usd/Door.usd
+        variants: null
+      init_state:
+        pos:
+        - 0.0
+        - 0.0
+        - 0.0
+        rot:
+        - 1.0
+        - 0.0
+        - 0.0
+        - 0.0
+        lin_vel:
+        - 0.0
+        - 0.0
+        - 0.0
+        ang_vel:
+        - 0.0
+        - 0.0
+        - 0.0
+        joint_pos:
+          door_joint: 0.0
+          handle_joint: 0.0
+        joint_vel:
+          .*: 0.0
+      collision_group: 0
+      debug_vis: false
+      articulation_root_prim_path: null
+      soft_joint_pos_limit_factor: 1.0
+      actuators:
+        door_joint:
+          class_type: isaaclab.actuators.actuator_pd:ImplicitActuator
+          joint_names_expr:
+          - door_joint
+          effort_limit: null
+          velocity_limit: null
+          effort_limit_sim: 50.0
+          velocity_limit_sim: 1.0
+          stiffness: 20.0
+          damping: 4.0
+          armature: null
+          friction: 6.0
+          dynamic_friction: 6.0
+          viscous_friction: 1.0
+        handle_joint:
+          class_type: isaaclab.actuators.actuator_pd:ImplicitActuator
+          joint_names_expr:
+          - handle_joint
+          effort_limit: null
+          velocity_limit: null
+          effort_limit_sim: 10.0
+          velocity_limit_sim: 4.0
+          stiffness: 3.0
+          damping: 0.3
+          armature: null
+          friction: 0.03
+          dynamic_friction: 0.01
+          viscous_friction: 0.03
+      actuator_value_resolution_debug_print: false
+    robot:
+      class_type: isaaclab.assets.articulation.articulation:Articulation
+      prim_path: '{ENV_REGEX_NS}/Robot'
+      spawn:
+        func: isaaclab.sim.spawners.from_files.from_files:spawn_from_usd
+        visible: true
+        semantic_tags: null
+        copy_from_source: true
+        mass_props: null
+        deformable_props: null
+        rigid_props:
+          rigid_body_enabled: null
+          kinematic_enabled: null
+          disable_gravity: false
+          linear_damping: 0.0
+          angular_damping: 0.0
+          max_linear_velocity: 1000.0
+          max_angular_velocity: 1000.0
+          max_depenetration_velocity: 1.0
+          max_contact_impulse: null
+          enable_gyroscopic_forces: null
+          retain_accelerations: false
+          solver_position_iteration_count: null
+          solver_velocity_iteration_count: null
+          sleep_threshold: null
+          stabilization_threshold: null
+        collision_props: null
+        activate_contact_sensors: true
+        scale: null
+        articulation_props:
+          articulation_enabled: null
+          enabled_self_collisions: false
+          solver_position_iteration_count: 8
+          solver_velocity_iteration_count: 2
+          sleep_threshold: null
+          stabilization_threshold: null
+          fix_root_link: false
+        fixed_tendons_props: null
+        spatial_tendons_props: null
+        joint_drive_props: null
+        visual_material_path: material
+        visual_material: null
+        usd_path: /home/jing/push_door/source/door_env/door_env/assets/grq20_v2d4_piperL_front_mount_gripper_hook/grq20_v2d4_piperL_front_mount_gripper_hook.usd
+        variants: null
+      init_state:
+        pos:
+        - 0.8
+        - 0.9
+        - 0.43
+        rot:
+        - 0.707
+        - 0.0
+        - 0.0
+        - -0.707
+        lin_vel:
+        - 0.0
+        - 0.0
+        - 0.0
+        ang_vel:
+        - 0.0
+        - 0.0
+        - 0.0
+        joint_pos:
+          FL_hip_joint: -0.05
+          FL_thigh_joint: 0.75
+          FL_calf_joint: -1.5
+          FR_hip_joint: 0.05
+          FR_thigh_joint: 0.75
+          FR_calf_joint: -1.5
+          RL_hip_joint: -0.05
+          RL_thigh_joint: 0.75
+          RL_calf_joint: -1.5
+          RR_hip_joint: 0.05
+          RR_thigh_joint: 0.75
+          RR_calf_joint: -1.5
+          link1_joint: 0.0
+          link2_joint: 0.2
+          link3_joint: 0.0
+          link4_joint: 0.0
+          link5_joint: 0.0
+          link6_joint: 0.0
+        joint_vel:
+          .*: 0.0
+      collision_group: 0
+      debug_vis: false
+      articulation_root_prim_path: null
+      soft_joint_pos_limit_factor: 1.0
+      actuators:
+        legs:
+          class_type: isaaclab.actuators.actuator_pd:ImplicitActuator
+          joint_names_expr:
+          - (FL|FR|RL|RR)_(hip|thigh|calf)_joint
+          effort_limit: null
+          velocity_limit: null
+          effort_limit_sim: 150.0
+          velocity_limit_sim: 20.94
+          stiffness: 120.0
+          damping: 8.0
+          armature: null
+          friction: null
+          dynamic_friction: null
+          viscous_friction: null
+        arm:
+          class_type: isaaclab.actuators.actuator_pd:ImplicitActuator
+          joint_names_expr:
+          - link[1-6]_joint
+          effort_limit: null
+          velocity_limit: null
+          effort_limit_sim: 120.0
+          velocity_limit_sim: 6.0
+          stiffness: 25.0
+          damping: 1.0
+          armature: null
+          friction: null
+          dynamic_friction: null
+          viscous_friction: null
+      actuator_value_resolution_debug_print: false
+    ee_frame:
+      class_type: isaaclab.sensors.frame_transformer.frame_transformer:FrameTransformer
+      prim_path: '{ENV_REGEX_NS}/Robot/base_link'
+      update_period: 0.0
+      history_length: 0
+      debug_vis: false
+      source_frame_offset:
+        pos:
+        - 0.0
+        - 0.0
+        - 0.0
+        rot:
+        - 1.0
+        - 0.0
+        - 0.0
+        - 0.0
+      target_frames:
+      - prim_path: '{ENV_REGEX_NS}/Robot/gripper_grasp_center'
+        name: gripper_grasp_center
+        offset:
+          pos:
+          - 0.0
+          - 0.0
+          - 0.0
+          rot:
+          - 1.0
+          - 0.0
+          - 0.0
+          - 0.0
+      visualizer_cfg:
+        prim_path: /Visuals/FrameTransformer
+        markers:
+          frame:
+            func: isaaclab.sim.spawners.from_files.from_files:spawn_from_usd
+            visible: true
+            semantic_tags: null
+            copy_from_source: true
+            mass_props: null
+            deformable_props: null
+            rigid_props: null
+            collision_props: null
+            activate_contact_sensors: false
+            scale:
+            - 0.5
+            - 0.5
+            - 0.5
+            articulation_props: null
+            fixed_tendons_props: null
+            spatial_tendons_props: null
+            joint_drive_props: null
+            visual_material_path: material
+            visual_material: null
+            usd_path: https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/5.1/Isaac/Props/UIElements/frame_prim.usd
+            variants: null
+          connecting_line:
+            func: isaaclab.sim.spawners.shapes.shapes:spawn_cylinder
+            visible: true
+            semantic_tags: null
+            copy_from_source: true
+            mass_props: null
+            rigid_props: null
+            collision_props: null
+            activate_contact_sensors: false
+            visual_material_path: material
+            visual_material:
+              func: isaaclab.sim.spawners.materials.visual_materials:spawn_preview_surface
+              diffuse_color:
+              - 1.0
+              - 1.0
+              - 0.0
+              emissive_color:
+              - 0.0
+              - 0.0
+              - 0.0
+              roughness: 1.0
+              metallic: 0.0
+              opacity: 1.0
+            physics_material_path: material
+            physics_material: null
+            radius: 0.002
+            height: 1.0
+            axis: Z
+    hook_contact:
+      class_type: isaaclab.sensors.contact_sensor.contact_sensor:ContactSensor
+      prim_path: '{ENV_REGEX_NS}/Robot/gripper_hook'
+      update_period: 0.0
+      history_length: 3
+      debug_vis: false
+      track_pose: false
+      track_contact_points: false
+      max_contact_data_count_per_prim: 4
+      track_air_time: false
+      force_threshold: 1.0
+      filter_prim_paths_expr:
+      - '{ENV_REGEX_NS}/Door/handle_1'
+      visualizer_cfg:
+        prim_path: /Visuals/ContactSensor
+        markers:
+          contact:
+            func: isaaclab.sim.spawners.shapes.shapes:spawn_sphere
+            visible: true
+            semantic_tags: null
+            copy_from_source: true
+            mass_props: null
+            rigid_props: null
+            collision_props: null
+            activate_contact_sensors: false
+            visual_material_path: material
+            visual_material:
+              func: isaaclab.sim.spawners.materials.visual_materials:spawn_preview_surface
+              diffuse_color:
+              - 1.0
+              - 0.0
+              - 0.0
+              emissive_color:
+              - 0.0
+              - 0.0
+              - 0.0
+              roughness: 0.5
+              metallic: 0.0
+              opacity: 1.0
+            physics_material_path: material
+            physics_material: null
+            radius: 0.02
+          no_contact:
+            func: isaaclab.sim.spawners.shapes.shapes:spawn_sphere
+            visible: false
+            semantic_tags: null
+            copy_from_source: true
+            mass_props: null
+            rigid_props: null
+            collision_props: null
+            activate_contact_sensors: false
+            visual_material_path: material
+            visual_material:
+              func: isaaclab.sim.spawners.materials.visual_materials:spawn_preview_surface
+              diffuse_color:
+              - 0.0
+              - 1.0
+              - 0.0
+              emissive_color:
+              - 0.0
+              - 0.0
+              - 0.0
+              roughness: 0.5
+              metallic: 0.0
+              opacity: 1.0
+            physics_material_path: material
+            physics_material: null
+            radius: 0.02
+    body_door_contact:
+      class_type: isaaclab.sensors.contact_sensor.contact_sensor:ContactSensor
+      prim_path: '{ENV_REGEX_NS}/Robot/base_link'
+      update_period: 0.0
+      history_length: 1
+      debug_vis: false
+      track_pose: false
+      track_contact_points: false
+      max_contact_data_count_per_prim: 4
+      track_air_time: false
+      force_threshold: 1.0
+      filter_prim_paths_expr:
+      - '{ENV_REGEX_NS}/Door/door_1'
+      visualizer_cfg:
+        prim_path: /Visuals/ContactSensor
+        markers:
+          contact:
+            func: isaaclab.sim.spawners.shapes.shapes:spawn_sphere
+            visible: true
+            semantic_tags: null
+            copy_from_source: true
+            mass_props: null
+            rigid_props: null
+            collision_props: null
+            activate_contact_sensors: false
+            visual_material_path: material
+            visual_material:
+              func: isaaclab.sim.spawners.materials.visual_materials:spawn_preview_surface
+              diffuse_color:
+              - 1.0
+              - 0.0
+              - 0.0
+              emissive_color:
+              - 0.0
+              - 0.0
+              - 0.0
+              roughness: 0.5
+              metallic: 0.0
+              opacity: 1.0
+            physics_material_path: material
+            physics_material: null
+            radius: 0.02
+          no_contact:
+            func: isaaclab.sim.spawners.shapes.shapes:spawn_sphere
+            visible: false
+            semantic_tags: null
+            copy_from_source: true
+            mass_props: null
+            rigid_props: null
+            collision_props: null
+            activate_contact_sensors: false
+            visual_material_path: material
+            visual_material:
+              func: isaaclab.sim.spawners.materials.visual_materials:spawn_preview_surface
+              diffuse_color:
+              - 0.0
+              - 1.0
+              - 0.0
+              emissive_color:
+              - 0.0
+              - 0.0
+              - 0.0
+              roughness: 0.5
+              metallic: 0.0
+              opacity: 1.0
+            physics_material_path: material
+            physics_material: null
+            radius: 0.02
+    leg_door_contact:
+      class_type: isaaclab.sensors.contact_sensor.contact_sensor:ContactSensor
+      prim_path: '{ENV_REGEX_NS}/Robot/(FL|FR|RL|RR)_(hip|thigh|calf|foot)'
+      update_period: 0.0
+      history_length: 1
+      debug_vis: false
+      track_pose: false
+      track_contact_points: false
+      max_contact_data_count_per_prim: 4
+      track_air_time: false
+      force_threshold: 1.0
+      filter_prim_paths_expr:
+      - '{ENV_REGEX_NS}/Door/door_1'
+      visualizer_cfg:
+        prim_path: /Visuals/ContactSensor
+        markers:
+          contact:
+            func: isaaclab.sim.spawners.shapes.shapes:spawn_sphere
+            visible: true
+            semantic_tags: null
+            copy_from_source: true
+            mass_props: null
+            rigid_props: null
+            collision_props: null
+            activate_contact_sensors: false
+            visual_material_path: material
+            visual_material:
+              func: isaaclab.sim.spawners.materials.visual_materials:spawn_preview_surface
+              diffuse_color:
+              - 1.0
+              - 0.0
+              - 0.0
+              emissive_color:
+              - 0.0
+              - 0.0
+              - 0.0
+              roughness: 0.5
+              metallic: 0.0
+              opacity: 1.0
+            physics_material_path: material
+            physics_material: null
+            radius: 0.02
+          no_contact:
+            func: isaaclab.sim.spawners.shapes.shapes:spawn_sphere
+            visible: false
+            semantic_tags: null
+            copy_from_source: true
+            mass_props: null
+            rigid_props: null
+            collision_props: null
+            activate_contact_sensors: false
+            visual_material_path: material
+            visual_material:
+              func: isaaclab.sim.spawners.materials.visual_materials:spawn_preview_surface
+              diffuse_color:
+              - 0.0
+              - 1.0
+              - 0.0
+              emissive_color:
+              - 0.0
+              - 0.0
+              - 0.0
+              roughness: 0.5
+              metallic: 0.0
+              opacity: 1.0
+            physics_material_path: material
+            physics_material: null
+            radius: 0.02
+    body_door_frame_contact:
+      class_type: isaaclab.sensors.contact_sensor.contact_sensor:ContactSensor
+      prim_path: '{ENV_REGEX_NS}/Robot/base_link'
+      update_period: 0.0
+      history_length: 1
+      debug_vis: false
+      track_pose: false
+      track_contact_points: false
+      max_contact_data_count_per_prim: 4
+      track_air_time: false
+      force_threshold: 1.0
+      filter_prim_paths_expr:
+      - '{ENV_REGEX_NS}/Door/base_link'
+      visualizer_cfg:
+        prim_path: /Visuals/ContactSensor
+        markers:
+          contact:
+            func: isaaclab.sim.spawners.shapes.shapes:spawn_sphere
+            visible: true
+            semantic_tags: null
+            copy_from_source: true
+            mass_props: null
+            rigid_props: null
+            collision_props: null
+            activate_contact_sensors: false
+            visual_material_path: material
+            visual_material:
+              func: isaaclab.sim.spawners.materials.visual_materials:spawn_preview_surface
+              diffuse_color:
+              - 1.0
+              - 0.0
+              - 0.0
+              emissive_color:
+              - 0.0
+              - 0.0
+              - 0.0
+              roughness: 0.5
+              metallic: 0.0
+              opacity: 1.0
+            physics_material_path: material
+            physics_material: null
+            radius: 0.02
+          no_contact:
+            func: isaaclab.sim.spawners.shapes.shapes:spawn_sphere
+            visible: false
+            semantic_tags: null
+            copy_from_source: true
+            mass_props: null
+            rigid_props: null
+            collision_props: null
+            activate_contact_sensors: false
+            visual_material_path: material
+            visual_material:
+              func: isaaclab.sim.spawners.materials.visual_materials:spawn_preview_surface
+              diffuse_color:
+              - 0.0
+              - 1.0
+              - 0.0
+              emissive_color:
+              - 0.0
+              - 0.0
+              - 0.0
+              roughness: 0.5
+              metallic: 0.0
+              opacity: 1.0
+            physics_material_path: material
+            physics_material: null
+            radius: 0.02
+    leg_door_frame_contact:
+      class_type: isaaclab.sensors.contact_sensor.contact_sensor:ContactSensor
+      prim_path: '{ENV_REGEX_NS}/Robot/(FL|FR|RL|RR)_(hip|thigh|calf|foot)'
+      update_period: 0.0
+      history_length: 1
+      debug_vis: false
+      track_pose: false
+      track_contact_points: false
+      max_contact_data_count_per_prim: 4
+      track_air_time: false
+      force_threshold: 1.0
+      filter_prim_paths_expr:
+      - '{ENV_REGEX_NS}/Door/base_link'
+      visualizer_cfg:
+        prim_path: /Visuals/ContactSensor
+        markers:
+          contact:
+            func: isaaclab.sim.spawners.shapes.shapes:spawn_sphere
+            visible: true
+            semantic_tags: null
+            copy_from_source: true
+            mass_props: null
+            rigid_props: null
+            collision_props: null
+            activate_contact_sensors: false
+            visual_material_path: material
+            visual_material:
+              func: isaaclab.sim.spawners.materials.visual_materials:spawn_preview_surface
+              diffuse_color:
+              - 1.0
+              - 0.0
+              - 0.0
+              emissive_color:
+              - 0.0
+              - 0.0
+              - 0.0
+              roughness: 0.5
+              metallic: 0.0
+              opacity: 1.0
+            physics_material_path: material
+            physics_material: null
+            radius: 0.02
+          no_contact:
+            func: isaaclab.sim.spawners.shapes.shapes:spawn_sphere
+            visible: false
+            semantic_tags: null
+            copy_from_source: true
+            mass_props: null
+            rigid_props: null
+            collision_props: null
+            activate_contact_sensors: false
+            visual_material_path: material
+            visual_material:
+              func: isaaclab.sim.spawners.materials.visual_materials:spawn_preview_surface
+              diffuse_color:
+              - 0.0
+              - 1.0
+              - 0.0
+              emissive_color:
+              - 0.0
+              - 0.0
+              - 0.0
+              roughness: 0.5
+              metallic: 0.0
+              opacity: 1.0
+            physics_material_path: material
+            physics_material: null
+            radius: 0.02
+    dome_light:
+      class_type: null
+      prim_path: /World/DomeLight
+      spawn:
+        func: isaaclab.sim.spawners.lights.lights:spawn_light
+        visible: true
+        semantic_tags: null
+        copy_from_source: true
+        prim_type: DomeLight
+        color:
+        - 0.9
+        - 0.9
+        - 0.9
+        enable_color_temperature: false
+        color_temperature: 6500.0
+        normalize: false
+        exposure: 0.0
+        intensity: 500.0
+        texture_file: null
+        texture_format: automatic
+        visible_in_primary_ray: true
+      init_state:
+        pos:
+        - 0.0
+        - 0.0
+        - 0.0
+        rot:
+        - 1.0
+        - 0.0
+        - 0.0
+        - 0.0
+      collision_group: 0
+      debug_vis: false
+  recorders:
+    dataset_file_handler_class_type: isaaclab.utils.datasets.hdf5_dataset_file_handler:HDF5DatasetFileHandler
+    dataset_export_dir_path: /tmp/isaaclab/logs
+    dataset_filename: dataset
+    dataset_export_mode:
+      _value_: 1
+      _name_: EXPORT_ALL
+      _sort_order_: 1
+    export_in_record_pre_reset: true
+  observations:
+    policy_obs_clean:
+      concatenate_terms: true
+      concatenate_dim: -1
+      enable_corruption: false
+      history_length: null
+      flatten_history_dim: true
+      robot_arm_joint_pos:
+        func: isaaclab.envs.mdp.observations:joint_pos_rel
+        params:
+          asset_cfg:
+            name: robot
+            joint_names:
+            - link[1-6]_joint
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      robot_arm_joint_vel:
+        func: isaaclab.envs.mdp.observations:joint_vel_rel
+        params:
+          asset_cfg:
+            name: robot
+            joint_names:
+            - link[1-6]_joint
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      last_applied_arm_delta:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:last_applied_arm_delta
+        params:
+          action_name: high_level_action
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      arm_q_des_error:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:arm_q_des_error
+        params:
+          action_name: high_level_action
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      last_high_base_action:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:last_high_base_action
+        params: {}
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      last_arm_action:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:last_arm_action
+        params: {}
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      high_base_command:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:high_base_command_3d
+        params: {}
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      base_velocity_b:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:base_velocity_b
+        params:
+          robot_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      projected_gravity_b:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:projected_gravity_b
+        params:
+          robot_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      base_height:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:base_height
+        params:
+          robot_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      base_to_doorway_center_b_xy:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:base_to_doorway_center_b_xy
+        params:
+          robot_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          doorway_center_xy:
+          - 0.6
+          - 0.0
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      doorway_forward_axis_b_xy:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:doorway_forward_axis_b_xy
+        params:
+          robot_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          doorway_forward_axis:
+          - 0.0
+          - -1.0
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      ee_to_handle_target_b:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:ee_to_handle_target_b
+        params:
+          robot_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          ee_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - gripper_grasp_center
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          handle_cfg:
+            name: door
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - handle_1
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          handle_offset_h:
+          - -0.08
+          - 0.04
+          - 0.01
+          ee_offset_pos:
+          - 0.0
+          - 0.0
+          - 0.0
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      handle_target_position_b:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:handle_target_point_b
+        params:
+          robot_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          handle_cfg:
+            name: door
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - handle_1
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          handle_offset_h:
+          - -0.08
+          - 0.04
+          - 0.01
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      door_panel_forward_axis_b_xy:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:door_panel_forward_axis_b_xy
+        params:
+          robot_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          door_cfg:
+            name: door
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          panel_axis_d:
+          - 0.0
+          - -1.0
+          - 0.0
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+    privileged_state:
+      concatenate_terms: true
+      concatenate_dim: -1
+      enable_corruption: false
+      history_length: null
+      flatten_history_dim: true
+      ee_pos_in_handle:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:ee_pos_in_handle_frame
+        params:
+          ee_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - gripper_grasp_center
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          handle_cfg:
+            name: door
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - handle_1
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          ee_offset_pos:
+          - 0.0
+          - 0.0
+          - 0.0
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      ee_quat_err_in_handle:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:ee_quat_error_handle_frame
+        params:
+          ee_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - gripper_grasp_center
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          handle_cfg:
+            name: door
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - handle_1
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          ee_offset_pos:
+          - 0.0
+          - 0.0
+          - 0.0
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      handle_joint_pos:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:joint_position_scalar
+        params:
+          asset_cfg:
+            name: door
+            joint_names:
+            - handle_joint
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      handle_joint_vel:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:joint_velocity_scalar
+        params:
+          asset_cfg:
+            name: door
+            joint_names:
+            - handle_joint
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      door_joint_pos:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:joint_position_scalar
+        params:
+          asset_cfg:
+            name: door
+            joint_names:
+            - door_joint
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      door_joint_vel:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:joint_velocity_scalar
+        params:
+          asset_cfg:
+            name: door
+            joint_names:
+            - door_joint
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      unlock_state:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:unlock_state
+        params: {}
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      stage_id:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:stage_id
+        params: {}
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      body_door_contact_force_norm:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:body_door_contact_force_norm
+        params:
+          sensor_name: body_door_contact
+          force_ref: 50.0
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      leg_door_contact_force_norm:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:leg_door_contact_force_norm
+        params:
+          sensor_name: leg_door_contact
+          force_ref: 50.0
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      body_door_frame_contact_force_norm:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:body_door_frame_contact_force_norm
+        params:
+          sensor_name: body_door_frame_contact
+          force_ref: 50.0
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+      leg_door_frame_contact_force_norm:
+        func: door_env.tasks.manager_based.door_env.mdp.observations:leg_door_frame_contact_force_norm
+        params:
+          sensor_name: leg_door_frame_contact
+          force_ref: 50.0
+        modifiers: null
+        noise: null
+        clip: null
+        scale: null
+        history_length: 0
+        flatten_history_dim: true
+  actions:
+    high_level_action:
+      class_type: door_env.tasks.manager_based.door_env.mdp.hierarchical_actions:HighLevelDoorOpenAction
+      asset_name: robot
+      debug_vis: false
+      clip: null
+      leg_joint_names:
+      - FL_hip_joint
+      - FR_hip_joint
+      - RL_hip_joint
+      - RR_hip_joint
+      - FL_thigh_joint
+      - FR_thigh_joint
+      - RL_thigh_joint
+      - RR_thigh_joint
+      - FL_calf_joint
+      - FR_calf_joint
+      - RL_calf_joint
+      - RR_calf_joint
+      arm_joint_names:
+      - link1_joint
+      - link2_joint
+      - link3_joint
+      - link4_joint
+      - link5_joint
+      - link6_joint
+      base_command_low:
+      - -0.45
+      - -0.25
+      - -0.5
+      - 0.38
+      - -0.15
+      base_command_high:
+      - 0.8
+      - 0.25
+      - 0.5
+      - 0.47
+      - 0.28
+      command_smoothing_alpha: 0.35
+      default_body_height: 0.43
+      low_level_policy_path: /home/jing/push_door/source/door_env/door_env/tasks/manager_based/door_env/low_level_locomotion/model_30000.pt
+      low_level_policy_format: checkpoint
+      low_level_actor_cfg:
+        actor:
+          num_actor_obs: 70
+          num_actions: 12
+          actor_hidden_dims:
+          - 512
+          - 256
+          - 128
+          actor_obs_normalization: false
+        privileged_encoder:
+          num_privileged_obs: 43
+          privileged_encoder_hidden_dims:
+          - 64
+          - 32
+          num_privileged_encoder_out: 16
+        heightmap_encoder:
+          num_heightmap_obs: 187
+          heightmap_encoder_hidden_dims:
+          - 64
+          - 32
+          num_heightmap_encoder_out: 32
+        critic:
+          num_critic_obs: 99
+          critic_hidden_dims:
+          - 512
+          - 256
+          - 128
+          critic_obs_normalization: false
+        init_noise_std: 1.0
+        noise_std_type: scalar
+        activation: elu
+        min_normalized_std:
+        - 0.01
+        - 0.01
+        - 0.01
+        - 0.01
+        - 0.01
+        - 0.01
+        - 0.01
+        - 0.01
+        - 0.01
+        - 0.01
+        - 0.01
+        - 0.01
+        use_estimator_out: true
+      low_level_vae_cfg:
+        encoder_in_dim: 235
+        encoder_hidden_dims:
+        - 128
+        encoder_out_dim: 64
+        encoder_head_dim_dict:
+          obs_vel: 3
+          obs_com: 3
+          obs_mass: 1
+          obs_latent: 16
+        decoder_in_dim: 23
+        decoder_hidden_dims:
+        - 64
+        - 128
+        decoder_out_dim: 51
+        activation: elu
+      low_level_rl_algorithms_source_root: /home/jing/Downloads/rl_sim_env-dev_yzc-653bdb9f039139e507b7d52a405b6dfd0bb53be4/source/rl_sim_env
+      low_level_obs_dim: 47
+      low_level_history_length: 5
+      low_level_action_scale: 0.25
+      low_level_decimation: 8
+      low_level_onnx_use_cuda: true
+      low_level_base_ang_vel_scale: 0.25
+      low_level_joint_vel_scale: 0.05
+      low_level_last_action_scale: 0.25
+      low_level_command_scale:
+      - 2.0
+      - 2.0
+      - 0.25
+      - 2.0
+      - 1.0
+      arm_action_scale:
+      - 0.8
+      - 0.8
+      - 0.8
+      - 0.8
+      - 0.6
+      - 0.6
+      arm_target_smoothing_alpha: 0.35
+      arm_target_max_delta: 0.08
+      use_default_arm_offset: true
+      use_stage2_action_scale: true
+      stage2_arm_scale: 0.6
+      stage2_wrist_scale: 0.35
+      use_stage2_tracking_error_limit: true
+      stage2_tracking_error_limit:
+      - 0.15
+      - 0.15
+      - 0.12
+      - 0.1
+      - 0.1
+      - 0.1
+      arm_stiffness: 25.0
+      arm_damping: 1.0
+      nominal_joint_pos:
+      - 0.0
+      - 0.2
+      - -0.2
+      - 0.0
+      - 0.0
+      - 0.0
+      joint_pos_min:
+      - -2.6179938
+      - 0.0
+      - -2.9670597
+      - -2.2165681
+      - -1.5620696
+      - -2.0943951
+      joint_pos_max:
+      - 2.6179938
+      - 3.1415926
+      - 0.0
+      - 2.2165681
+      - 1.5620696
+      - 2.0943951
+      effort_limit:
+      - 50.0
+      - 50.0
+      - 50.0
+      - 50.0
+      - 50.0
+      - 50.0
+      velocity_limit:
+      - 5.0
+      - 5.0
+      - 5.5
+      - 5.5
+      - 5.0
+      - 5.0
+      armature:
+      - 0.02
+      - 0.02
+      - 0.02
+      - 0.01
+      - 0.01
+      - 0.01
+      preserve_order: true
+  events:
+    reset_robot_root:
+      func: door_env.tasks.manager_based.door_env.mdp.stage:reset_root_state_to_default
+      params:
+        asset_cfg:
+          name: robot
+          joint_names: null
+          joint_ids: slice(None,None,None)
+          fixed_tendon_names: null
+          fixed_tendon_ids: slice(None,None,None)
+          body_names: null
+          body_ids: slice(None,None,None)
+          object_collection_names: null
+          object_collection_ids: slice(None,None,None)
+          preserve_order: false
+      mode: reset
+      interval_range_s: null
+      is_global_time: false
+      min_step_count_between_reset: 0
+    reset_robot_joints:
+      func: isaaclab.envs.mdp.events:reset_joints_by_offset
+      params:
+        asset_cfg:
+          name: robot
+          joint_names:
+          - link[1-6]_joint
+          - (FL|FR|RL|RR)_(hip|thigh|calf)_joint
+          joint_ids: slice(None,None,None)
+          fixed_tendon_names: null
+          fixed_tendon_ids: slice(None,None,None)
+          body_names: null
+          body_ids: slice(None,None,None)
+          object_collection_names: null
+          object_collection_ids: slice(None,None,None)
+          preserve_order: false
+        position_range:
+        - 0.0
+        - 0.0
+        velocity_range:
+        - 0.0
+        - 0.0
+      mode: reset
+      interval_range_s: null
+      is_global_time: false
+      min_step_count_between_reset: 0
+    reset_door_joints:
+      func: isaaclab.envs.mdp.events:reset_joints_by_offset
+      params:
+        asset_cfg:
+          name: door
+          joint_names: null
+          joint_ids: slice(None,None,None)
+          fixed_tendon_names: null
+          fixed_tendon_ids: slice(None,None,None)
+          body_names: null
+          body_ids: slice(None,None,None)
+          object_collection_names: null
+          object_collection_ids: slice(None,None,None)
+          preserve_order: false
+        position_range:
+        - 0.0
+        - 0.0
+        velocity_range:
+        - 0.0
+        - 0.0
+      mode: reset
+      interval_range_s: null
+      is_global_time: false
+      min_step_count_between_reset: 0
+    staged_reset: null
+    door_mechanism:
+      func: door_env.tasks.manager_based.door_env.mdp.events:update_door_lock_hysteresis_delayed_release
+      params:
+        handle_joint_name: handle_joint
+        door_joint_name: door_joint
+        unlock_threshold: -0.3
+        unlock_hold_steps: 4
+        release_delay_steps: 2
+        relock_door_threshold: 0.05
+        relock_handle_threshold: -0.03
+        door_closed_pos: 0.0
+        door_open_sign: 1.0
+        lock_door_pos: 0.0
+      mode: interval
+      interval_range_s:
+      - 0.01
+      - 0.01
+      is_global_time: false
+      min_step_count_between_reset: 0
+    visualize_doorway_debug: null
+  rerender_on_reset: false
+  wait_for_textures: true
+  xr: null
+  teleop_devices:
+    devices: {}
+  export_io_descriptors: false
+  io_descriptors_output_dir: null
+  log_dir: null
+  is_finite_horizon: false
+  episode_length_s: 15.0
+  rewards:
+    stage_gated_door_reward:
+      func: door_env.tasks.manager_based.door_env.mdp.rewards:stage_gated_door_reward
+      params:
+        enable_stage_gated_reward: true
+        stage0_only_reward: false
+        pre_grasp_cap: 0.0
+        stage0_reward_terms:
+          base_to_pick_stance:
+            func: door_env.tasks.manager_based.door_env.mdp.rewards:base_to_pick_stance
+            weight: 0.15
+            params:
+              robot_cfg:
+                name: robot
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names: null
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_cfg:
+                name: door
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - handle_1
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_offset_h:
+              - -0.08
+              - 0.04
+              - 0.01
+              stance_offset_w:
+              - -0.3
+              - 0.3
+              - -1.0
+              std: 0.6
+          ee_to_handle:
+            func: door_env.tasks.manager_based.door_env.mdp.rewards:ee_to_handle
+            weight: 1.2
+            params:
+              ee_cfg:
+                name: robot
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - gripper_grasp_center
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_cfg:
+                name: door
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - handle_1
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_offset_h:
+              - -0.08
+              - 0.04
+              - 0.01
+              std: 0.15
+          ee_to_target_shaped:
+            func: door_env.tasks.manager_based.door_env.mdp.rewards:ee_to_target_shaped
+            weight: 0.2
+            params:
+              ee_cfg:
+                name: robot
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - gripper_grasp_center
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_cfg:
+                name: door
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - handle_1
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_offset_h:
+              - -0.08
+              - 0.04
+              - 0.01
+          approach_progress:
+            func: door_env.tasks.manager_based.door_env.mdp.rewards:approach_progress
+            weight: 6.0
+            params:
+              ee_cfg:
+                name: robot
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - gripper_grasp_center
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_cfg:
+                name: door
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - handle_1
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_offset_h:
+              - -0.08
+              - 0.04
+              - 0.01
+          approach_reached_nearly:
+            func: door_env.tasks.manager_based.door_env.mdp.rewards:approach_reached_nearly
+            weight: 1.0
+            params:
+              ee_cfg:
+                name: robot
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - gripper_grasp_center
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_cfg:
+                name: door
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - handle_1
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_offset_h:
+              - -0.08
+              - 0.04
+              - 0.01
+              distance_threshold: 0.05
+          ee_handle_contact:
+            func: door_env.tasks.manager_based.door_env.mdp.rewards:ee_handle_contact
+            weight: 1.0
+            params:
+              ee_cfg:
+                name: robot
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - gripper_grasp_center
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_cfg:
+                name: door
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - handle_1
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_offset_h:
+              - -0.08
+              - 0.04
+              - 0.01
+              contact_sensor_name: hook_contact
+              distance_threshold: 0.05
+              contact_threshold: 0.25
+          ee_to_handle_shaped:
+            func: door_env.tasks.manager_based.door_env.mdp.rewards:ee_to_handle_shaped
+            weight: 0.8
+            params:
+              ee_cfg:
+                name: robot
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - gripper_grasp_center
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_cfg:
+                name: door
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - handle_1
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_offset_h:
+              - -0.08
+              - 0.04
+              - 0.01
+          align_hook_near_handle:
+            func: door_env.tasks.manager_based.door_env.mdp.rewards:align_hook_near_handle
+            weight: 0.5
+            params:
+              ee_cfg:
+                name: robot
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - gripper_grasp_center
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_cfg:
+                name: door
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - handle_1
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_offset_h:
+              - -0.08
+              - 0.04
+              - 0.01
+              activation_distance: 0.2
+              transition_width: 0.04
+              hook_approach_axis_hand:
+              - 0.0
+              - 1.0
+              - 0.0
+              hook_mouth_axis_hand:
+              - 1.0
+              - 0.0
+              - 0.0
+              handle_approach_axis: 1
+              expected_approach_sign: -1.0
+              world_down_axis:
+              - 0.0
+              - 0.0
+              - -1.0
+              approach_weight: 0.1
+              mouth_down_weight: 0.9
+          grasping_success_shaped:
+            func: door_env.tasks.manager_based.door_env.mdp.rewards:grasping_success_shaped
+            weight: 3.0
+            params:
+              ee_cfg:
+                name: robot
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - gripper_grasp_center
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_cfg:
+                name: door
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - handle_1
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_offset_h:
+              - -0.08
+              - 0.04
+              - 0.01
+              contact_sensor_name: hook_contact
+              distance_threshold: 0.1
+              contact_threshold: 0.25
+              align_threshold: 0.3
+              hook_approach_axis_hand:
+              - 0.0
+              - 1.0
+              - 0.0
+              hook_mouth_axis_hand:
+              - 1.0
+              - 0.0
+              - 0.0
+              handle_approach_axis: 1
+              expected_approach_sign: -1.0
+              world_down_axis:
+              - 0.0
+              - 0.0
+              - -1.0
+              approach_weight: 0.1
+              mouth_down_weight: 0.9
+          grasp_stable_progress:
+            func: door_env.tasks.manager_based.door_env.mdp.rewards:grasp_stable_progress
+            weight: 8.0
+            params:
+              ee_cfg:
+                name: robot
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - gripper_grasp_center
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_cfg:
+                name: door
+                joint_names: null
+                joint_ids: slice(None,None,None)
+                fixed_tendon_names: null
+                fixed_tendon_ids: slice(None,None,None)
+                body_names:
+                - handle_1
+                body_ids: slice(None,None,None)
+                object_collection_names: null
+                object_collection_ids: slice(None,None,None)
+                preserve_order: false
+              handle_offset_h:
+              - -0.08
+              - 0.04
+              - 0.01
+              contact_sensor_name: hook_contact
+              distance_threshold: 0.1
+              contact_threshold: 0.25
+              align_threshold: 0.3
+              stable_time_s: 0.08
+              hook_approach_axis_hand:
+              - 0.0
+              - 1.0
+              - 0.0
+              hook_mouth_axis_hand:
+              - 1.0
+              - 0.0
+              - 0.0
+              handle_approach_axis: 1
+              expected_approach_sign: -1.0
+              world_down_axis:
+              - 0.0
+              - 0.0
+              - -1.0
+              approach_weight: 0.1
+              mouth_down_weight: 0.9
+        align_grasp_weight: 0.0
+        align_grasp_params:
+          hand_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - gripper_grasp_center
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          handle_cfg:
+            name: door
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - handle_1
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          hook_approach_axis_hand:
+          - 0.0
+          - 1.0
+          - 0.0
+          hook_mouth_axis_hand:
+          - 1.0
+          - 0.0
+          - 0.0
+          handle_approach_axis: 1
+          expected_approach_sign: -1.0
+          world_down_axis:
+          - 0.0
+          - 0.0
+          - -1.0
+          approach_weight: 0.1
+          mouth_down_weight: 0.9
+        approach_handle_weight: 0.0
+        approach_handle_params:
+          hand_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - gripper_grasp_center
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          handle_cfg:
+            name: door
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - handle_1
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          ee_offset_pos:
+          - 0.0
+          - 0.0
+          - 0.0
+          handle_offset_h:
+          - -0.08
+          - 0.04
+          - 0.01
+          eps: 0.0001
+          scale: 0.02
+          clip: 5.0
+        grasp_handle_weight: 0.0
+        grasp_handle_params:
+          handle_joint_cfg:
+            name: door
+            joint_names:
+            - handle_joint
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          hand_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - gripper_grasp_center
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          handle_cfg:
+            name: door
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - handle_1
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          hook_approach_axis_hand:
+          - 0.0
+          - 1.0
+          - 0.0
+          hook_mouth_axis_hand:
+          - 1.0
+          - 0.0
+          - 0.0
+          handle_approach_axis: 1
+          expected_approach_sign: -1.0
+          world_down_axis:
+          - 0.0
+          - 0.0
+          - -1.0
+          approach_weight: 0.1
+          mouth_down_weight: 0.9
+          contact_sensor_name: hook_contact
+          distance_threshold: 0.1
+          ee_offset_pos:
+          - 0.0
+          - 0.0
+          - 0.0
+          handle_offset_h:
+          - -0.08
+          - 0.04
+          - 0.01
+          align_threshold: 0.3
+          force_threshold: 0.25
+          force_scale: 2.0
+          hold_steps: 2
+          hold_tau: 2.5
+          hold_power: 1.0
+          hold_decay: 0.6
+          unlock_enter_pos: -0.02
+          fade_width: 0.2
+          less_than: true
+        grasp_success_weight: 1.0
+        grasp_success_params:
+          handle_joint_cfg:
+            name: door
+            joint_names:
+            - handle_joint
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          hand_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - gripper_grasp_center
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          handle_cfg:
+            name: door
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - handle_1
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          hook_approach_axis_hand:
+          - 0.0
+          - 1.0
+          - 0.0
+          hook_mouth_axis_hand:
+          - 1.0
+          - 0.0
+          - 0.0
+          handle_approach_axis: 1
+          expected_approach_sign: -1.0
+          world_down_axis:
+          - 0.0
+          - 0.0
+          - -1.0
+          approach_weight: 0.1
+          mouth_down_weight: 0.9
+          contact_sensor_name: hook_contact
+          distance_threshold: 0.1
+          ee_offset_pos:
+          - 0.0
+          - 0.0
+          - 0.0
+          handle_offset_h:
+          - -0.08
+          - 0.04
+          - 0.01
+          align_threshold: 0.3
+          force_threshold: 0.25
+          hold_steps: 2
+          bonus: 10.0
+          require_wrap: true
+          archive_cap: 512
+          relax_near_after_handle_pos: -0.05
+          less_than: true
+        press_handle_weight: 2.0
+        press_handle_params:
+          handle_joint_cfg:
+            name: door
+            joint_names:
+            - handle_joint
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          hand_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - gripper_grasp_center
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          handle_cfg:
+            name: door
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - handle_1
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          hook_approach_axis_hand:
+          - 0.0
+          - 1.0
+          - 0.0
+          hook_mouth_axis_hand:
+          - 1.0
+          - 0.0
+          - 0.0
+          handle_approach_axis: 1
+          expected_approach_sign: -1.0
+          world_down_axis:
+          - 0.0
+          - 0.0
+          - -1.0
+          approach_weight: 0.1
+          mouth_down_weight: 0.9
+          contact_sensor_name: hook_contact
+          distance_threshold: 0.12
+          ee_offset_pos:
+          - 0.0
+          - 0.0
+          - 0.0
+          handle_offset_h:
+          - -0.08
+          - 0.04
+          - 0.01
+          align_threshold: 0.3
+          contact_threshold: 0.25
+          less_than: true
+          vel_deadzone: 0.01
+          vel_scale: 0.05
+          opposite_penalty: 0.2
+          clip: 1.0
+          pos_deadzone: 0.0001
+          pos_scale: 0.002
+          use_vel_ema: true
+          vel_ema_alpha: 0.25
+        keep_handle_after_press_weight: 2.0
+        keep_handle_after_press_params:
+          handle_joint_cfg:
+            name: door
+            joint_names:
+            - handle_joint
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          door_joint_cfg:
+            name: door
+            joint_names:
+            - door_joint
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          hand_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - gripper_grasp_center
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          handle_cfg:
+            name: door
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - handle_1
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          hook_approach_axis_hand:
+          - 0.0
+          - 1.0
+          - 0.0
+          hook_mouth_axis_hand:
+          - 1.0
+          - 0.0
+          - 0.0
+          handle_approach_axis: 1
+          expected_approach_sign: -1.0
+          world_down_axis:
+          - 0.0
+          - 0.0
+          - -1.0
+          approach_weight: 0.1
+          mouth_down_weight: 0.9
+          contact_sensor_name: hook_contact
+          distance_threshold: 0.12
+          ee_offset_pos:
+          - 0.0
+          - 0.0
+          - 0.0
+          handle_offset_h:
+          - -0.08
+          - 0.04
+          - 0.01
+          align_threshold: 0.3
+          contact_threshold: 0.25
+          handle_start_pos: 0.0
+          handle_threshold: -0.3
+          activate_progress: 0.2
+          use_unlock_success_latch: true
+          door_closed_pos: 0.0
+          door_open_sign: 1.0
+          push_enter_open: 0.02
+          door_open_threshold: 0.35
+          max_keep_steps_after_unlock: 24
+          keep_until_door_open: true
+          hold_reward: 0.01
+          progress_boost: 0.04
+          release_event_penalty: 0.2
+          lost_penalty: 0.02
+          auto_open_penalty: 0.05
+        stall_after_grasp_weight: 0.5
+        stall_after_grasp_params:
+          handle_joint_cfg:
+            name: door
+            joint_names:
+            - handle_joint
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          hand_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - gripper_grasp_center
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          handle_cfg:
+            name: door
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - handle_1
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          hook_approach_axis_hand:
+          - 0.0
+          - 1.0
+          - 0.0
+          hook_mouth_axis_hand:
+          - 1.0
+          - 0.0
+          - 0.0
+          handle_approach_axis: 1
+          expected_approach_sign: -1.0
+          world_down_axis:
+          - 0.0
+          - 0.0
+          - -1.0
+          approach_weight: 0.1
+          mouth_down_weight: 0.9
+          contact_sensor_name: hook_contact
+          distance_threshold: 0.12
+          ee_offset_pos:
+          - 0.0
+          - 0.0
+          - 0.0
+          handle_offset_h:
+          - -0.08
+          - 0.04
+          - 0.01
+          align_threshold: 0.3
+          contact_threshold: 0.25
+          stall_pos: -0.1
+          pos_scale: 0.03
+          penalty: 0.02
+          recent_window_steps: 200
+          grace_steps: 10
+          less_than: true
+        stall_after_press_weight: 0.5
+        stall_after_press_params:
+          handle_joint_cfg:
+            name: door
+            joint_names:
+            - handle_joint
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          door_joint_cfg:
+            name: door
+            joint_names:
+            - door_joint
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          enter_depth: 0.25
+          exit_depth: 0.22
+          grace_steps: 60
+          ramp_steps: 60
+          door_closed_pos: 0.0
+          door_open_sign: 1.0
+          door_progress_threshold: 0.01
+          max_penalty: 0.2
+          less_than: true
+        unlock_progress_weight: 4.5
+        unlock_progress_params:
+          handle_joint_cfg:
+            name: door
+            joint_names:
+            - handle_joint
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          hand_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - gripper_grasp_center
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          handle_cfg:
+            name: door
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - handle_1
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          hook_approach_axis_hand:
+          - 0.0
+          - 1.0
+          - 0.0
+          hook_mouth_axis_hand:
+          - 1.0
+          - 0.0
+          - 0.0
+          handle_approach_axis: 1
+          expected_approach_sign: -1.0
+          world_down_axis:
+          - 0.0
+          - 0.0
+          - -1.0
+          approach_weight: 0.1
+          mouth_down_weight: 0.9
+          contact_sensor_name: hook_contact
+          distance_threshold: 0.12
+          ee_offset_pos:
+          - 0.0
+          - 0.0
+          - 0.0
+          handle_offset_h:
+          - -0.08
+          - 0.04
+          - 0.01
+          align_threshold: 0.3
+          contact_threshold: 0.25
+          require_grasp_success: true
+          handle_start_pos: 0.0
+          reward_stop_pos: -0.3
+          delta_power: 1.2
+          ema_alpha: 0.7
+          deadzone: 5.0e-05
+          backtrack_penalty: 0.01
+          delta_gain: 1.2
+          abs_power: 1.8
+          abs_gain: 0.35
+          hold_start_ratio: 0.35
+          hold_power: 1.6
+          hold_gain: 0.25
+          clip: 2.0
+        unlock_transition_weight: 1.0
+        unlock_transition_params:
+          bonus: 10.0
+        push_door_weight: 8.0
+        push_door_params:
+          door_joint_cfg:
+            name: door
+            joint_names:
+            - door_joint
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names: null
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          hand_cfg:
+            name: robot
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - gripper_grasp_center
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          handle_cfg:
+            name: door
+            joint_names: null
+            joint_ids: slice(None,None,None)
+            fixed_tendon_names: null
+            fixed_tendon_ids: slice(None,None,None)
+            body_names:
+            - handle_1
+            body_ids: slice(None,None,None)
+            object_collection_names: null
+            object_collection_ids: slice(None,None,None)
+            preserve_order: false
+          hook_approach_axis_hand:
+          - 0.0
+          - 1.0
+          - 0.0
+          hook_mouth_axis_hand:
+          - 1.0
+          - 0.0
+          - 0.0
+          handle_approach_axis: 1
+          expected_approach_sign: -1.0
+          world_down_axis:
+          - 0.0
+          - 0.0
+          - -1.0
+          approach_weight: 0.1
+          mouth_down_weight: 0.9
+          contact_sensor_name: hook_contact
+          distance_threshold: 0.14
+          ee_offset_pos:
+          - 0.0
+          - 0.0
+          - 0.0
+          handle_offset_h:
+          - -0.08
+          - 0.04
+          - 0.01
+          align_threshold: 0.2
+          contact_threshold: 0.25
+          require_unlock_success_latch: true
+          require_gate: true
+          door_open_sign: 1.0
+          door_closed_pos: 0.0
+          door_open_target: 0.35
+          delta_scale: 1.0
+          abs_scale: 0.2
+          ema_alpha: 0.25
+          deadzone: 0.0001
+          backtrack_penalty: 0.1
+          clip: 1.0
+      weight: 1.0
+    base_hold:
+      func: door_env.tasks.manager_based.door_env.mdp.rewards:base_hold_reward
+      params:
+        robot_cfg:
+          name: robot
+          joint_names: null
+          joint_ids: slice(None,None,None)
+          fixed_tendon_names: null
+          fixed_tendon_ids: slice(None,None,None)
+          body_names: null
+          body_ids: slice(None,None,None)
+          object_collection_names: null
+          object_collection_ids: slice(None,None,None)
+          preserve_order: false
+        door_joint_cfg:
+          name: door
+          joint_names:
+          - door_joint
+          joint_ids: slice(None,None,None)
+          fixed_tendon_names: null
+          fixed_tendon_ids: slice(None,None,None)
+          body_names: null
+          body_ids: slice(None,None,None)
+          object_collection_names: null
+          object_collection_ids: slice(None,None,None)
+          preserve_order: false
+        stage3_start_angle: 0.1
+        stage4_start_angle: 0.7
+        door_closed_pos: 0.0
+        door_open_sign: 1.0
+        cmd_penalty_scale: 0.05
+        pos_penalty_scale: 0.25
+        yaw_penalty_scale: 0.1
+        cmd_deadzone: 0.03
+        pos_deadzone: 0.03
+        yaw_deadzone: 0.08
+      weight: 1.0
+    arm_return_default:
+      func: door_env.tasks.manager_based.door_env.mdp.rewards:arm_return_default_after_door_open
+      params:
+        robot_cfg:
+          name: robot
+          joint_names:
+          - link[1-6]_joint
+          joint_ids: slice(None,None,None)
+          fixed_tendon_names: null
+          fixed_tendon_ids: slice(None,None,None)
+          body_names: null
+          body_ids: slice(None,None,None)
+          object_collection_names: null
+          object_collection_ids: slice(None,None,None)
+          preserve_order: false
+        door_joint_cfg:
+          name: door
+          joint_names:
+          - door_joint
+          joint_ids: slice(None,None,None)
+          fixed_tendon_names: null
+          fixed_tendon_ids: slice(None,None,None)
+          body_names: null
+          body_ids: slice(None,None,None)
+          object_collection_names: null
+          object_collection_ids: slice(None,None,None)
+          preserve_order: false
+        activation_angle: 1.0
+        door_closed_pos: 0.0
+        door_open_sign: 1.0
+        std: 0.35
+      weight: 1.0
+    base_push_follow:
+      func: door_env.tasks.manager_based.door_env.mdp.rewards:base_push_follow_reward
+      params:
+        robot_cfg:
+          name: robot
+          joint_names: null
+          joint_ids: slice(None,None,None)
+          fixed_tendon_names: null
+          fixed_tendon_ids: slice(None,None,None)
+          body_names: null
+          body_ids: slice(None,None,None)
+          object_collection_names: null
+          object_collection_ids: slice(None,None,None)
+          preserve_order: false
+        door_joint_cfg:
+          name: door
+          joint_names:
+          - door_joint
+          joint_ids: slice(None,None,None)
+          fixed_tendon_names: null
+          fixed_tendon_ids: slice(None,None,None)
+          body_names: null
+          body_ids: slice(None,None,None)
+          object_collection_names: null
+          object_collection_ids: slice(None,None,None)
+          preserve_order: false
+        doorway_center_xy:
+        - 0.6
+        - 0.0
+        doorway_forward_axis:
+        - 0.0
+        - -1.0
+        stage3_start_angle: 0.1
+        stage4_start_angle: 0.7
+        door_reward_start_angle: 0.2
+        door_closed_pos: 0.0
+        door_open_sign: 1.0
+        k_yaw: 2.0
+        progress_vel_scale: 0.5
+      weight: 1.0
+    base_traverse:
+      func: door_env.tasks.manager_based.door_env.mdp.rewards:base_traverse_reward
+      params:
+        robot_cfg:
+          name: robot
+          joint_names: null
+          joint_ids: slice(None,None,None)
+          fixed_tendon_names: null
+          fixed_tendon_ids: slice(None,None,None)
+          body_names: null
+          body_ids: slice(None,None,None)
+          object_collection_names: null
+          object_collection_ids: slice(None,None,None)
+          preserve_order: false
+        door_joint_cfg:
+          name: door
+          joint_names:
+          - door_joint
+          joint_ids: slice(None,None,None)
+          fixed_tendon_names: null
+          fixed_tendon_ids: slice(None,None,None)
+          body_names: null
+          body_ids: slice(None,None,None)
+          object_collection_names: null
+          object_collection_ids: slice(None,None,None)
+          preserve_order: false
+        doorway_center_xy:
+        - 0.6
+        - 0.0
+        doorway_forward_axis:
+        - 0.0
+        - -1.0
+        hook_contact_sensor_name: hook_contact
+        stage3_start_angle: 0.1
+        stage4_start_angle: 0.7
+        door_closed_pos: 0.0
+        door_open_sign: 1.0
+        k_lat: 6.0
+        k_yaw: 2.0
+        progress_vel_scale: 0.5
+        release_contact_threshold: 0.2
+        release_near_doorway_distance: 0.35
+        keep_opening_reward: 8.0
+      weight: 1.0
+    base_safety:
+      func: door_env.tasks.manager_based.door_env.mdp.rewards:base_safety_reward
+      params:
+        robot_cfg:
+          name: robot
+          joint_names: null
+          joint_ids: slice(None,None,None)
+          fixed_tendon_names: null
+          fixed_tendon_ids: slice(None,None,None)
+          body_names: null
+          body_ids: slice(None,None,None)
+          object_collection_names: null
+          object_collection_ids: slice(None,None,None)
+          preserve_order: false
+        door_joint_cfg:
+          name: door
+          joint_names:
+          - door_joint
+          joint_ids: slice(None,None,None)
+          fixed_tendon_names: null
+          fixed_tendon_ids: slice(None,None,None)
+          body_names: null
+          body_ids: slice(None,None,None)
+          object_collection_names: null
+          object_collection_ids: slice(None,None,None)
+          preserve_order: false
+        body_door_sensor_name: body_door_contact
+        leg_door_sensor_name: leg_door_contact
+        body_frame_sensor_name: body_door_frame_contact
+        leg_frame_sensor_name: leg_door_frame_contact
+        force_ref: 50.0
+        default_height: 0.43
+        door_closed_pos: 0.0
+        door_open_sign: 1.0
+        stage3_start_angle: 0.1
+        stage4_start_angle: 0.7
+        early_body_door_weight: 1.0
+        early_leg_door_weight: 0.5
+        early_body_frame_weight: 1.0
+        early_leg_frame_weight: 0.5
+        late_body_door_weight: 0.5
+        late_leg_door_weight: 0.2
+        late_body_frame_weight: 0.5
+        late_leg_frame_weight: 0.2
+        cmd_rate_weight: 0.05
+        height_pitch_weight: 2.0
+      weight: 1.0
+  terminations:
+    time_out:
+      func: isaaclab.envs.mdp.terminations:time_out
+      params: {}
+      time_out: true
+    base_traverse_success:
+      func: door_env.tasks.manager_based.door_env.mdp.rewards:base_traverse_success
+      params:
+        robot_cfg:
+          name: robot
+          joint_names: null
+          joint_ids: slice(None,None,None)
+          fixed_tendon_names: null
+          fixed_tendon_ids: slice(None,None,None)
+          body_names: null
+          body_ids: slice(None,None,None)
+          object_collection_names: null
+          object_collection_ids: slice(None,None,None)
+          preserve_order: false
+        door_joint_cfg:
+          name: door
+          joint_names:
+          - door_joint
+          joint_ids: slice(None,None,None)
+          fixed_tendon_names: null
+          fixed_tendon_ids: slice(None,None,None)
+          body_names: null
+          body_ids: slice(None,None,None)
+          object_collection_names: null
+          object_collection_ids: slice(None,None,None)
+          preserve_order: false
+        doorway_center_xy:
+        - 0.6
+        - 0.0
+        doorway_forward_axis:
+        - 0.0
+        - -1.0
+        door_closed_pos: 0.0
+        door_open_sign: 1.0
+        min_door_angle: 0.7
+        pass_distance: 0.5
+        num_steps: 3
+      time_out: false
+    base_bad_orientation:
+      func: door_env.tasks.manager_based.door_env.mdp.terminations:base_bad_orientation
+      params:
+        robot_cfg:
+          name: robot
+          joint_names: null
+          joint_ids: slice(None,None,None)
+          fixed_tendon_names: null
+          fixed_tendon_ids: slice(None,None,None)
+          body_names: null
+          body_ids: slice(None,None,None)
+          object_collection_names: null
+          object_collection_ids: slice(None,None,None)
+          preserve_order: false
+        door_joint_cfg:
+          name: door
+          joint_names:
+          - door_joint
+          joint_ids: slice(None,None,None)
+          fixed_tendon_names: null
+          fixed_tendon_ids: slice(None,None,None)
+          body_names: null
+          body_ids: slice(None,None,None)
+          object_collection_names: null
+          object_collection_ids: slice(None,None,None)
+          preserve_order: false
+        doorway_forward_axis:
+        - 0.0
+        - -1.0
+        door_closed_pos: 0.0
+        door_open_sign: 1.0
+        traverse_stage_angle: 0.7
+        min_base_displacement: 0.15
+        require_traverse_stage: false
+        require_base_displacement: false
+        hard_yaw_error: 2.09
+        hard_steps: 60
+        soft_yaw_error: 1.57
+        soft_steps: 100
+      time_out: false
+    base_fall:
+      func: door_env.tasks.manager_based.door_env.mdp.terminations:base_fall
+      params:
+        robot_cfg:
+          name: robot
+          joint_names: null
+          joint_ids: slice(None,None,None)
+          fixed_tendon_names: null
+          fixed_tendon_ids: slice(None,None,None)
+          body_names: null
+          body_ids: slice(None,None,None)
+          object_collection_names: null
+          object_collection_ids: slice(None,None,None)
+          preserve_order: false
+        min_base_height: 0.2
+      time_out: false
+  curriculum: null
+  commands: null
+agent:
+  seed: 42
+  device: cuda:0
+  num_steps_per_env: 48
+  max_iterations: 3000
+  empirical_normalization: null
+  obs_groups:
+    policy:
+    - policy_obs_clean
+    critic:
+    - policy_obs_clean
+    - privileged_state
+  clip_actions: 1.0
+  save_interval: 50
+  experiment_name: door_asymmetric_critic
+  run_name: privileged_latent_teacher_distill_ready_v1
+  logger: tensorboard
+  neptune_project: isaaclab
+  wandb_project: isaaclab
+  resume: false
+  load_run: .*
+  load_checkpoint: model_.*.pt
+  class_name: DoorBotTeacherRunner
+  policy:
+    class_name: DoorBotPrivilegedActorCritic
+    init_noise_std: 1.0
+    noise_std_type: scalar
+    actor_obs_normalization: true
+    critic_obs_normalization: true
+    actor_hidden_dims:
+    - 256
+    - 256
+    - 128
+    critic_hidden_dims:
+    - 256
+    - 256
+    - 128
+    activation: elu
+    z_priv_dim: 16
+    privileged_encoder_hidden_dims:
+    - 64
+    - 32
+    clean_obs_group: policy_obs_clean
+    privileged_obs_group: privileged_state
+    privileged_obs_normalization: true
+  algorithm:
+    class_name: PPO
+    num_learning_epochs: 5
+    num_mini_batches: 4
+    learning_rate: 0.001
+    schedule: adaptive
+    gamma: 0.99
+    lam: 0.95
+    entropy_coef: 0.01
+    desired_kl: 0.01
+    max_grad_norm: 1.0
+    value_loss_coef: 1.0
+    use_clipped_value_loss: true
+    clip_param: 0.2
+    normalize_advantage_per_mini_batch: false
+    rnd_cfg: null
+    symmetry_cfg: null
+  history_length: 32
+  collect_distillation_rollout: false
+  stage_transition_thresholds:
+    initial_push: 0.02
+    push_follow: 0.1
+    traverse: 0.7

@@ -1,0 +1,8 @@
+[submodule "source/rl_sim_env/data/assets"]
+	path = source/rl_sim_env/data/assets
+	url = git@192.168.161.21:galileo_robot_software/assets.git
+	branch = dev_yzc
+[submodule "source/rl_sim_env/data/datasets"]
+	path = source/rl_sim_env/data/datasets
+	url = ../datasets.git
+	branch = main
